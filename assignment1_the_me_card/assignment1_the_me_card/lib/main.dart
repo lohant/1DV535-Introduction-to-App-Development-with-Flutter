@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                   width: 250, // Specify the width
                   height: 250, // Specify the height
                   child: Image.asset(
-                    'images/anton.jpg',
+                    'images/man.png',
                     fit: BoxFit.cover, // Ensures the image fits within the circular shape
                   ),
                 ),
