@@ -41,7 +41,7 @@ class _TodoListState extends State<TodoList> {
       if (_controller.text.isNotEmpty) {
         // Lägger till texten från input-fältet till listan.
         _todos.add(_controller.text);
-        // Renar input-fältet.
+        // Rensar input-fältet.
         _controller.clear();
       }
     });
@@ -49,8 +49,8 @@ class _TodoListState extends State<TodoList> {
 
   void _editItem(int index) {
     setState(() {
-      _controller.text = _todos[index]; // Sätter input-fältets text till den tryckta radens text.
-      _todos.removeAt(index); // Tar bort den tryckta raden från listan.
+      _controller.text = _todos[index]; // Sätter input-fältets text till den valda radens text.
+      _todos.removeAt(index); // Tar bort den valda raden från listan.
     });
   }
 
