@@ -1,3 +1,4 @@
-# assignment1_the_me_card
+# Assignment 1 - the_me_card
+Instructions: Create a static Flutter application that shows some information about you.
 
-A new Flutter project.
+
