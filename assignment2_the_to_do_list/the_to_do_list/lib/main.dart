@@ -31,9 +31,28 @@ class _TodoListState extends State<TodoList> {
     'Handla mat', 
     'Färdigställa app-projekt', 
     'Anmäla mig till nya kurser',
-    ];
+  ];
   
   TextEditingController _controller = TextEditingController(); // TextEditingController kontrollerar och hanterar input.
+
+  void _addItem() {
+    setState(() {
+      // Kontrollerar att input-fältet inte är tomt.
+      if (_controller.text.isNotEmpty) {
+        // Lägger till texten från input-fältet till listan.
+        _todos.add(_controller.text);
+        // Renar input-fältet.
+        _controller.clear();
+      }
+    });
+  }
+
+  void _editItem(int index) {
+    setState(() {
+      _controller.text = _todos[index]; // Sätter input-fältets text till den tryckta radens text.
+      _todos.removeAt(index); // Tar bort den tryckta raden från listan.
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,18 +82,7 @@ class _TodoListState extends State<TodoList> {
             // FloatingActionButton lägger till text till listan.
             FloatingActionButton.extended(
               // onPressed exekveras när knappen trycks.
-              onPressed: () {
-                // setState meddelar att statet har ändrats och att UI behöver uppdateras.
-                setState(() {
-                  // Kontrollerar att input-fältet inte är tomt.
-                  if (_controller.text.isNotEmpty) {
-                    // Lägger till texten från input-fältet till listan.
-                    _todos.add(_controller.text);
-                    // Renar input-fältet.
-                    _controller.clear();
-                  }
-                });
-              },
+              onPressed: _addItem,
               // Anger knappens text.
               label: const Text('Add item'),
               // Anger knappens ikon.
@@ -94,13 +102,7 @@ class _TodoListState extends State<TodoList> {
                     // The title property displays the text of the to-do item.
                     title: Text(_todos[index]), // Texten.
                     // onTap specificerar vad som händer när man trycker på en rad.
-                    onTap: () {
-                      // Flyttar texten från raden till input-fältet och tar bort den från listan.
-                      setState(() {
-                        _controller.text = _todos[index]; // Sätter input-fältets text till den tryckta radens text.
-                        _todos.removeAt(index); // Tar bort den tryckta raden från listan.
-                      });
-                    },
+                    onTap: () => _editItem(index),
                   );
                 },
               ),
