@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Personal Card'),
-          leading: const Icon(Icons.flutter_dash),
         ),
         body: Center(
           child: Column(
@@ -21,21 +20,21 @@ class MyApp extends StatelessWidget {
             children: [
               ClipOval(
                 child: SizedBox(
-                  width: 250, // Specify the width
-                  height: 250, // Specify the height
+                  width: 250,
+                  height: 250,
                   child: Image.asset(
                     'images/man.png',
-                    fit: BoxFit.cover, // Ensures the image fits within the circular shape
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              const SizedBox(height: 20), // Add some spacing between the image and text
+              const SizedBox(height: 20),
               Text(
                 'Anton Holst',
                 style: GoogleFonts.acme(fontSize: 30),
                 textDirection: TextDirection.ltr,
               ),
-              const SizedBox(height: 20), // Add some spacing between the text and the container
+              const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(16.0),
                 margin: const EdgeInsets.symmetric(horizontal: 20),
